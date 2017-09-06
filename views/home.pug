@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1
+    a.main-title(href="/expenses") Spend List
+  p.lead A different way to track your expenses.
+  hr
+  .row
+    .col-sm-6
+      h2 Be aware
+      p Track your expenses and know for what and how much you spend.
+      p
+    .col-sm-6
+      h2 See the big picture
+      p Get the regular analytics reports.
+      p
+    .col-sm-6
+      h2 Share
+      p Add your family members to manage family budget.
+      p
+    .col-sm-6
+      h2 Predict
+      p Make plans considering your expenses and savings.
+      p
+    if !user
+      .col-sm-12
+        br
+        br
+        a.btn.btn-block.btn-primary(href="/login") Try it out

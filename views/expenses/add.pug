@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Add expense
+    form#add-expense.form-horizontal(method='POST')
+      input(type='hidden', name='_csrf', value=_csrf)
+      .form-group
+        label.col-sm-3.control-label(for='amount') Amount
+        .col-sm-7
+          input.form-control(name='amount', id='amount', placeholder='Amount', type='number' min='0' required)
+      .form-group
+        label.col-sm-3.control-label(for='currency') Currency
+        .col-sm-7
+          select.form-control(name='currency', id='currency', placeholder='Currency', required)
+            each currency in currencies
+                option(value=currency.id)= currency.shortcut
+      .form-group
+        label.col-sm-3.control-label(for='category') Category
+        .col-sm-7
+          select.form-control(name='category', id='category', placeholder='Category', required)
+            each category in categories
+                option(value=category)= category
+      .form-group
+        label.col-sm-3.control-label(for='date') Date
+        .col-sm-7
+          div.input-group.date
+            input.form-control(type='text' name='date' id='date' value=today required)
+            span.input-group-addon
+              i.fa.fa-calendar
+      .form-group
+        label.col-sm-3.control-label(for='comment') Comment
+        .col-sm-7
+          textarea.form-control(name='comment', id='comment', placeholder='Comment')
+      .form-group
+        .col-sm-offset-3.col-sm-7
+            button.btn.btn-block.btn-primary(type='submit')
+              | Add

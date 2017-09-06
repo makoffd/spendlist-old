@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+  .page-header.page-header_expenses
+    .col-md-10
+      h3 My expenses
+    .col-md-2
+      a.btn.btn-block.btn-primary(href='/expenses/add')
+        | Add
+  
+  p This week: 
+    b= thisWeekTotal  
+    |&nbsp;&nbsp;This month: 
+    b= thisMonthTotal  
+    |&nbsp;&nbsp;Previous week: 
+    b= prevWeekTotal  
+    |&nbsp;&nbsp;Previous month: 
+    b= prevMonthTotal  
+    
+  table.table.table-responsive.table-striped.table-bordered
+    tr
+      td
+        b Amount
+      td.hide-on-mobile
+        b Currency
+      td
+        b Category
+      td
+        b Date
+      td
+        b User
+    each expense in expenses
+      tr
+        td= expense.amount
+        td.hide-on-mobile= expense.currency.shortcut
+        td= expense.category
+        td= expense.date
+        td= expense.user
